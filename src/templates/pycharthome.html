@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" style="background:white;">
+      <div class="container">
+      	<div class="row">
+	        <div class="col-sm-6">
+	          <h1>PyChart Home</h1>
+	          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+	          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+            {{ refDump }}
+	        </div>
+	        <div class="col-sm-6">
+	          <p>
+	            <img src="{% static 'img/stockchart.jpg' %}" class='img-responsive'/>
+	          </p>
+	        </div>
+	    </div>
+      </div>
+    </div>
+
+
+    <div class="container" style="text-align:center">
+	    <div class="col-sm-6 col-sm-offset-3">
+			<h1>Under Development, please be patient..</h1>
+
+			<form method="POST" action="" class="form-horizontal"> {% csrf_token %}
+				<div class="form-group form-group-lg">
+					{% if form.email.errors %}
+						{% for err in form.email.errors %}
+							<div class="alert alert-warning" role="alert">{{ err }}</div>
+						{% endfor %}
+					{% endif %}
+
+
+
+					<div class="input-group">
+						<input class="form-control" type="email" name="email" placeholder="Your email..."/>
+						<span class="input-group-btn">
+							<input type='submit' value='Join' class='btn btn-primary btn-lg'/>
+						</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}
